@@ -1,0 +1,53 @@
+{
+    "type": "bubble",
+    "size": "giga",
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "text",
+          "text": "ยินดีตอนรับท่านมาสู่ chatbot for school",
+          "margin": "none",
+          "size": "lg",
+          "weight": "bold",
+          "align": "center"
+        },
+        {
+          "type": "separator"
+        },
+        {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "คุณเป็น",
+              "margin": "xl",
+              "weight": "bold"
+            },
+            {
+              "type": "text",
+              "text": "ชื่อ : ",
+              "margin": "none",
+              "weight": "bold"
+            },
+            {
+              "type": "text",
+              "text": "ชั้น : ",
+              "weight": "bold"
+            },
+            {
+              "type": "separator",
+              "margin": "xl"
+            }
+          ]
+        },
+        {
+          "type": "box",
+          "layout": "vertical",
+          "contents": []
+        }
+      ]
+    }
+  }

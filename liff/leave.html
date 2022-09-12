@@ -1,0 +1,161 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@100;200&display=swap" rel="stylesheet">
+  
+  <!-- bootstrap 5.2 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+  
+  <!-- format javascript-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment-timezone@0.4.1/index.min.js"></script>
+  <!-- vue -->
+  <script src="https://unpkg.com/vue@3"></script>
+
+  <!-- liff-->
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <!-- alert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- script-->
+  <!--<script src="backend/backend_leaves2.js"></script> -->
+
+   <!-- VConsole -->
+   <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
+   <script>
+    var vConsole = new window.VConsole();
+   </script>
+
+</head>
+
+<body onload="Check_OS()">
+  <div id="leave_page">
+    <div v-if="type_user === 'student'">
+      <div style="height: 3rem;"></div>
+      <div class="container d-flex justify-content-center">
+        <div class="card mb-3" style="background-color: #fff0f8;width: 50rem;">
+          <div class="card-header"><h4><center><b>ระบบแจ้งลา สำหรับนักเรียน</b></center></h4></div>
+          <div class="card-body">
+            <div style="height: 1rem;"></div>
+
+            <div class="mb-3">
+              <label for="type_leave" class="form-label">ประเภท</label>
+              <select class="form-select" id="type_leave">
+                <option selected>เลือกประเภท</option>
+                <option value="1">ลาป่วย</option>
+                <option value="2">ลากิจ</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="leave_reason" class="form-label">เหตุผลการลา</label>
+              <textarea class="form-control" id="leave_reason" rows="3"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <div class="row">
+              <div class="col">
+                <label class="form-label">วันที่ลา</label>
+                <input type="date" id="start_date" class="form-control">
+              </div>
+              <div class="col">
+                <label class="form-label">ถึง</label>
+                <input type="date" id="end_date" class="form-control">
+              </div>
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="leave_file" class="form-label">หลักฐาน (ไฟล์ภาพไม่เกิน 10MB)</label>
+              <input onchange="upload_check()" class="form-control" type="file" id="leave_file">
+            </div>
+
+            <div class="d-grid gap-2">
+              <button type="button" onclick="get_form()" class="btn btn-outline-primary btn-lg">แจ้งลา</button>
+            </div>
+
+            <div style="height: 1.5rem;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div v-if="type_user === 'teacher'">
+      <div style="height: 3rem;">
+      </div>
+      <div class="container d-flex justify-content-center">
+
+        <div class="card text-bg-light mb-3" style="width: 60rem;">
+          <div class="card-header"><h4>ข้อมูลการแจ้งลา</h4></div>
+          <div class="card-body">
+
+              <div class="row justify-content-end align-items-end">
+                  <div class="col-auto">
+                      <select id="grade_student" class="form-select" onchange="get_class('grade_student', 'class_student_html')" style="max-width: 10rem;" aria-label="Default select example">
+                        <option selected>ชั้น</option>
+                        <option value="1">ม.1</option>
+                        <option value="2">ม.2</option>
+                        <option value="3">ม.3</option>
+                        <option value="4">ม.4</option>
+                        <option value="5">ม.5</option>
+                        <option value="6">ม.6</option>
+                      </select>
+                    </div>
+                <div class="col-auto" id="class_student_html">
+                  <select id="class_student" class="form-select" style="max-width: 10rem;" aria-label="Default select example" disabled>
+                    <option selected>ห้อง</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                  </select>
+                </div>
+                <div class="col-auto">
+                  <button type="button" class="btn btn-outline-success" onclick="create_table()">ค้นหา</button>
+                </div>
+              </div>
+              <div style="height: 1rem;"></div>
+              <div class="row">
+                <table class="table" id="tableleave_student">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">ชื่อ - นามสกุล</th>
+                      <th scope="col">ชั้น</th>
+                      <th scope="col">ห้อง</th>
+                      <th scope="col">ข้อมูลเพิ่มเติม</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!--<tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                      <td><button type="button" class="btn btn-outline-primary">ข้อมูล</button></td>
+                    </tr>-->
+                  </tbody>
+                </table>
+              </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <div v-if="type_user === 'management'">
+      c
+    </div>
+  </div>
+ <script src="backend/backend_leaves.js"></script>
+</body>
+</html>

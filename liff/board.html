@@ -1,0 +1,122 @@
+<html>
+    <head>
+        <title>board</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <!-- bootstrap 5.3-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+        <!-- bootstrap icon-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
+
+        <!-- liff -->
+        <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
+        <!-- alert -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <!-- format javascript-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
+        <!-- vue -->
+        <script src="https://unpkg.com/vue@3"></script>
+
+        <!-- ajax -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        <!-- VConsole -->
+        <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
+        <script>
+        var vConsole = new window.VConsole();
+        </script>
+
+    </head>
+    <body onload="Check_OS()">
+        <div id="board_index">
+            <div style="height: 2rem;"></div>
+                <div v-if="type_user === 'student'">
+                    <div v-if="count_data === 0">
+                        <div style="height: 2rem"></div>
+                        <div class="container d-flex justify-content-center" >
+                            <div class="card text-bg-danger mb-3" style="width: 40rem;max-height: 12rem;">
+                                <div class="card-body">
+                                    <div style="height: 1.5rem"></div>
+                                <h2 class="card-title">ไม่มีข้อมูลประชาสัมพันธ์ ของกลุ่มสาระในขณะนี้</h2>
+                                <p class="card-text" style="font-size: 20px;">กลุ่มสาระการเรียนรู้ยังไม่ได้มีการประชาสัมพันธ์ใดๆ สำหรับนักเรียนในขณะนี้</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-else>
+                        <div v-for="list in datas">
+                                <div class="container d-flex justify-content-center" >
+
+                                    <div class="card mb-3" style="width: 50rem;">
+                                        <div class="card-header text-bg-primary"><b>วิชา {{ list.course }}</b></div>
+                                        <div class="card-body text-bg-dark" style='height: 20rem;'>
+                                            <div class="row g-0">
+                                                <div class="col-auto">
+                                                    <div style="height: 1rem;"></div>
+                                                    <center><img :src="list.preview" class="rounded" style="height: 150px;width: 250px;"></center>
+                                                    <div style="height: 0.5rem;"></div>
+                                                    <button class="btn btn-primary" @click="alert_more(list.data_file, list.data)" style="width: 250px;">ดูเพิ่มเติม</button>
+                                                </div>
+                                                <div style="width: 1rem;"></div>
+                                                <div class="col">
+                                                    <div style="height: 2rem;"></div>  
+                                                    <h3>{{ list.title }}</h3>
+                                                    <p>{{ list.data }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer text-bg-dark"><b>โพสต์โดย {{ list.post_by }} ({{ moment(list.post_date, 'YYYY-MM-DD').format("DD / MM / YYYY") }})</b></div>
+                                    </div>
+                                </div>
+                                <div style="height: 1rem;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div v-else-if="type_user === 'teacher'">
+                    <div class="container d-flex justify-content-center">
+                        <div class="card mb-3" style="width: 40rem;">
+                            <div class="card-header text-bg-dark" ><h4><center><b>ประชาสัมพันธ์</b></center></h4></div>
+                            <div class="card-body text-bg-light">
+                                <div class="">
+                                    <div style="height: 1rem;"></div>
+                    
+                                    <div class="row-auto">
+                                    <div class="mb-3">                                        
+                                        <label for="title_board" class="form-label">หัวข้อ</label>
+                                        <input class="form-control" id="title_board" ></input>
+                                    </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="data_board" class="form-label">ข้อมูล</label>
+                                        <textarea class="form-control" id="data_board" rows="5"></textarea>
+                                    </div>
+                                
+                                    <div class="mb-3">
+                                        <label for="show_file" class="form-label">รูปตัวอย่าง (ไฟล์รูปไม่เกิน 10MB)</label>
+                                        <input onchange="upload_check1()" class="form-control" type="file" id="show_file">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="data_file" class="form-label">ไฟล์ข้อมูล (ไฟล์ไม่เกิน 20MB)</label>
+                                        <input onchange="upload_check2()" class="form-control" type="file" id="data_file">
+                                    </div>
+                    
+                                    <div class="d-grid gap-2">
+                                        <button type="button" onclick="get_form()" class="btn btn-outline-primary btn-lg">โพสต์ข้อมูล</button>
+                                    </div>
+                    
+                                    <div style="height: 1.5rem;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="backend/backend_board.js"></script>
+    </body>
+</html>

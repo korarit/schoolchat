@@ -1,0 +1,151 @@
+{
+"replyToken": "",
+"messages": [{
+    "type": "bubble",
+    "size": "giga",
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "spacing": "none",
+      "contents": [
+        {
+          "type": "image",
+          "url": "https://sv1.picz.in.th/images/2021/08/03/2QuP1Z.png",
+          "size": "full",
+          "aspectRatio": "12:6",
+          "aspectMode": "cover",
+          "animated": true
+        },
+        {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "image",
+              "url": "https://sprofile.line-scdn.net/0hNbu5mUQ-EU1YTAVgvGJvMigcEid7PUhfI3lWfm9JHS03fl5JJihdIj5EGCk2KANPfH1eKmpOSn1UX2YrRhrteV98T3pheVYScCNcqw",
+              "size": "full"
+            }
+          ],
+          "width": "200px",
+          "height": "200px",
+          "cornerRadius": "150px",
+          "position": "absolute",
+          "offsetStart": "100px",
+          "offsetTop": "80px",
+          "borderWidth": "2px",
+          "borderColor": "#F5B6FF"
+        },
+        {
+          "type": "box",
+          "layout": "vertical",
+          "spacing": "xs",
+          "contents": [
+            {
+              "type": "separator",
+              "margin": "xs",
+              "color": "#000000"
+            },
+            {
+              "type": "box",
+              "layout": "baseline",
+              "contents": [
+                {
+                  "type": "icon",
+                  "url": "https://media-public.canva.com/Kt-FM/MADIT2Kt-FM/2/tl.png",
+                  "offsetTop": "5px"
+                },
+                {
+                  "type": "text",
+                  "text": "ชื่อ - นามสกุล",
+                  "weight": "bold",
+                  "margin": "sm",
+                  "flex": 0,
+                  "color": "#000000",
+                  "size": "lg"
+                },
+                {
+                  "type": "text",
+                  "text": "กรฤต แสงทอง",
+                  "align": "end",
+                  "color": "#000000",
+                  "weight": "bold",
+                  "size": "lg"
+                }
+              ]
+            },
+            {
+              "type": "box",
+              "layout": "baseline",
+              "contents": [
+                {
+                  "type": "icon",
+                  "url": "https://media-public.canva.com/AwS70/MAE0wAAwS70/1/tl.png",
+                  "offsetTop": "6px"
+                },
+                {
+                  "type": "text",
+                  "text": "นักเรียนระดับชั้นมัธยมศึกษาปีที่",
+                  "weight": "bold",
+                  "margin": "lg",
+                  "flex": 0,
+                  "color": "#000000",
+                  "size": "lg"
+                },
+                {
+                  "type": "text",
+                  "text": "6 / 4",
+                  "align": "center",
+                  "color": "#000000",
+                  "weight": "bold"
+                }
+              ]
+            },
+            {
+              "type": "separator",
+              "color": "#000000"
+            }
+          ],
+          "margin": "xs",
+          "offsetTop": "90px"
+        },
+        {
+          "type": "text",
+          "text": "ยินดีต้องรับสู่ line chatbot for school พัฒนาโดย SW127 Team",
+          "color": "#000000",
+          "align": "start",
+          "gravity": "center",
+          "size": "sm",
+          "wrap": true,
+          "margin": "xl",
+          "offsetTop": "90px"
+        },
+        {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "button",
+              "style": "primary",
+              "color": "#F5B6FF",
+              "action": {
+                "type": "uri",
+                "label": "Website project 🎉",
+                "uri": "https://google.com"
+              },
+              "height": "sm"
+            }
+          ],
+          "maxWidth": "190px",
+          "offsetStart": "90px",
+          "margin": "sm",
+          "spacing": "xs",
+          "offsetTop": "105px"
+        }
+      ],
+      "paddingAll": "10px",
+      "backgroundColor": "#C8F7FE",
+      "margin": "xxl",
+      "height": "450px"
+    }
+}]
+}
