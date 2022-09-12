@@ -1,13 +1,13 @@
 {
     "domain":"https://sw127-chatbot.cf",
-    "sms_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90aHNtcy5jb21cL2xvZ2luIiwiaWF0IjoxNjYyNTUwNTk4LCJuYmYiOjE2NjI1NTA1OTgsImp0aSI6IlRyUXlmVjJEcTJQWU9SYzciLCJzdWIiOjEwNzIwNywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.sUNObhBrPrJ4ejQuYEYBtxMKI1rXPGsH7RJdrPXfMn8",
+    "sms_token":"",
     "dialogflow": {
-        "project_id": "ai-sheh",
-        "serect_key_flie": "ai-sheh-9a6d9ba42f71.json"
+        "project_id": "",
+        "serect_key_flie": ""
     },
     "line":{
-        "channel_access":"3QAl2DqXnKOcLVIpj0xxRh6VpDJopq1mnM39zqhQ+4ENEZ6baZVOImbScVPgq4FmmoppbvkEEPZGY7vX4CW3Ldij9qefurT7nQ0RAd4mWUvklv2Z+1y+oK98zXVNtqjmgjOY3TaTNjcD5h9RchMCqgdB04t89/1O/w1cDnyilFU=",
-        "channel_secret":"afa78787c0b475af43f6f2db7bfbdd82"
+        "channel_access":"",
+        "channel_secret":""
     },
     "line_richmenu":{
         "register":"richmenu-bedce325870354409d626f62bccc6400",
@@ -18,9 +18,9 @@
     },
     "database":{
         "host":"localhost",
-        "user":"root",
-        "password":"123",
-        "database":"schoo_chatbotv2"
+        "user":"",
+        "password":"",
+        "database":""
     },
     "line_liff_channel_id":"1657429942",
     "line_liff":{

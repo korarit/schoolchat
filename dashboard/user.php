@@ -242,7 +242,7 @@ if (!$_SESSION["Login_dashboard"]){  //check session
                 <div class="col" style="width: 15rem;"id="tableclass_select">
                   <select id="classtable_student" class="form-select form-select-sm" style="max-width: 10rem;"
                     aria-label="Default select example" disabled>
-                    <option selected>ห้อง</option>
+                    <option value='all'selected>ห้อง</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
