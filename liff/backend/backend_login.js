@@ -105,7 +105,7 @@ function get_forms(line_user) {
             if(response.data.data == 'register_success'){
                 liff.sendMessages([{
                     type: "text",
-                    text: "สมัครใช้ chatbot : " + 123
+                    text: "สมัครใช้ chatbot : " + student_id
                 }]).then();
             }else{
                 Swal.fire({

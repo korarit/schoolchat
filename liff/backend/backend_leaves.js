@@ -41,8 +41,8 @@ function get_class(get_html, name_html){
   $.getJSON('https://sw127-chatbot.cf/config/class.json', function(data){
           var datas = data[grade];
 
-          var html = '<label for="class_brocast" class="form-label">ห้อง</label>';
-          html += '<select id="class_brocast" class="form-select form-select-sm" aria-label="Default select example"><option value="all" selected>ห้อง</option>';
+          var html = '<label for="class_student" class="form-label">ห้อง</label>';
+          html += '<select id="class_student" class="form-select form-select-sm" aria-label="Default select example"><option value="all" selected>ห้อง</option>';
           let i = 0;
           for(list in datas){
               html += '<option value="'+datas[i]+'">'+datas[i]+'</option>';
