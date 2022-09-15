@@ -13,6 +13,7 @@
 - PHP 8.0.23
 - Line Messaging API (ref : https://github.com/line/line-bot-sdk-php)
 - Dialogflow API (ref : https://github.com/googleapis/google-cloud-php-dialogflow)
+- SMS Gateway API (ref : https://thsms.com/)
 ### Font-End
 - vue.js 3 (ref : https://vuejs.org/guide)
 - Bootstarp 5.2 (ref : https://getbootstrap.com/docs/5.2/getting-started/introduction/)
