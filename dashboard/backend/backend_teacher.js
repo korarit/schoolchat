@@ -74,13 +74,27 @@ function add_user(){
                     
             }
         ).then((res) => {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'คุณได้เพิ่มบุคลากรเรียบร้อย',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-                get_data('all')
+                var code = res.data.code;
+
+                if(code === '200'){
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'คุณได้เพิ่มบุคลากรเรียบร้อย',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    get_data('all')
+                }
+
+                if(code === '400'){
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'ให้บุคลากร login ใช้งาน chatbot ก่อน',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    get_data('all')
+                }
                 console.log(res)
             }
         )

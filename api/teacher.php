@@ -24,11 +24,16 @@ if($request_data['action'] == 'get_course'){
 }
 elseif($request_data['action'] == 'add_teacher'){
     $line_userid = $user_func->get_lineuserid($request_data['teacher_id']);
-    $get_data = $user_func->add_teacher($request_data['teacher_id'], $line_userid,$request_data['course_teach'], $request_data['grade_teach'], $request_data['class_teach'], $request_data['level']);
 
-    $output=array("code"=>"200", "data" => $get_data);
-    echo json_encode($output);
-    file_put_contents('log.txt', json_encode($output) . PHP_EOL, FILE_APPEND);
+    if($line_userid != null){
+        $get_data = $user_func->add_teacher($request_data['teacher_id'], $line_userid,$request_data['course_teach'], $request_data['grade_teach'], $request_data['class_teach'], $request_data['level']);
+        $output=array("code"=>"200", "data" => $get_data);
+        echo json_encode($output);
+    }else{
+        $output=array("code"=>"400");
+        echo json_encode($output);
+    }
+    //file_put_contents('log.txt', json_encode($output) . PHP_EOL, FILE_APPEND);
 
 }
 elseif($request_data['action'] == 'getdata_for_dashboard'){
