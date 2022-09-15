@@ -15,7 +15,10 @@
 - Line Messaging API (ref : https://github.com/line/line-bot-sdk-php)
 - Dialogflow API (ref : https://github.com/googleapis/google-cloud-php-dialogflow)
 - SMS Gateway API (ref : https://thsms.com/)
+- ฐานข้อมูล MarriaDB หรือ mysql
 ### Font-End
+- Javascript
+- HTML
 - vue.js 3 (ref : https://vuejs.org/guide)
 - Bootstarp 5.2 (ref : https://getbootstrap.com/docs/5.2/getting-started/introduction/)
 - sweetalret 2 (ref : https://sweetalert2.github.io/)
